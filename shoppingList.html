@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping List</title>
+
+    <style>
+        .hot
+        {
+            padding: 10px;
+            background-color: orangered;
+            margin: 5px;
+            width: 120px;
+        }
+        .cool
+        {
+            background-color: cornflowerblue;
+        }
+        #shopping-list-container
+        {
+            margin-left: 200px;
+            margin-top: 100px;
+        }
+        #total
+        {
+            font-size: 18pt;
+            display: inline;
+            margin-left: 3px;
+        }
+        h2#heading-shopping-list
+        {
+            display: inline;
+        }
+        #item-label
+        {
+            display: inline;
+        }
+        #text-entered
+        {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<div id="shopping-list-container">
+    <h2 id="heading-shopping-list">SHOPPING LIST</h2><span id="total"></span>
+    <ul id="food" style="color: black; font-size: 20pt">
+        <li id="first" class="hot">Rice</li>
+        <li id="second" class="hot">Fish</li>
+        <li id="third" class="hot">Vegetable</li>
+        <li id="fourth" class="hot">Juice</li>
+    </ul>
+    <a id="addButton" href="">Add new item</a><br><br>
+    <p id="item-label">Your new shopping item : </p><span id="text-entered"></span><br><br>
+    <label for="user-shopping-item"></label>
+    <input type="text" id="user-shopping-item" name="shopping-item">
+    <button id="trigger-button" value="Enter">Clear</button>
+</div>
+<script src=""></script>
+</body>
+</html>

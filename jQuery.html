@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+    <style>
+        p
+        {
+            font-size: 25pt;
+            margin-left: 30px;
+
+        }
+        .hot
+        {
+            background-color: lightcoral;
+            padding: 20px;
+            width: 100px;
+            margin-left: 30px;
+            margin-bottom: 10px;
+            font-size: 20pt;
+        }
+        .complete
+        {
+            background-color: cadetblue;
+        }
+        #new-product-button
+        {
+            margin-left: 220px;
+            font-size: 20px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: cornflowerblue;
+            display: inline;
+        }
+        #new-product-form
+        {
+            display: inline;
+            margin-left: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="list-container">
+    <p>My skincare products</p>
+    <div>
+        <button id="btn1">Btn1</button>
+        <button id="btn2">Btn2</button>
+        <button id="btn3">Btn3</button>
+    </div>
+    <ul id="products">
+        <li id="one" class="hot">Cleanser</li>
+        <li id="two" class="hot">Toner</li>
+        <li id="three" class="hot">Serum</li>
+    </ul>
+    <form id="new-product-form">
+        <label for="product-name"></label>
+        <input type="text" id="product-name" placeholder="Add new product">
+        <input type="submit" id="add-product-button" value="Add">
+    </form>
+
+    <button id="new-product-button">NEW PRODUCT</button>
+
+</div>
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/jQuery.js"></script>
+</body>
+</html>

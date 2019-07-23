@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skincare Spending</title>
+
+</head>
+<body>
+<h1>SKINCARE AND MAKEUP SPENDING</h1>
+<br><br>
+<button onclick="addRow()">Add Row</button>
+<button onclick="deleteRow()">Delete Row</button>
+<br><br>
+
+<table id="myTable">
+    <tr>
+        <th>Select</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price of Each</th>
+        <th>In</th>
+        <th>Sum</th>
+    </tr>
+    <tbody>
+    <tr>
+        <td>
+            <input type="checkbox" id="chk">
+        </td>
+        <td id="type">
+            <select>
+                <option>Makeup Remover</option>
+                <option>Cleanser</option>
+                <option>Toner</option>
+                <option>Moisturizer</option>
+                <option>Sunscreen</option>
+            </select>
+        </td>
+        <td id="name"><input type="text" name="text"></td>
+        <td>
+            <input type="number" min="1" max="10" id="quantity" onChange=showValue()>
+        </td>
+        <td><input type="text" name="text" id="price"></td>
+        <td id="currency">
+            <select>
+                <option>EUR</option>
+                <option>VND</option>
+                <option>PLN</option>
+            </select>
+        </td>
+        <td id="sum"></td>
+    </tr>
+    </tbody>
+</table>
+<br><br><br>
+    <button id="displayRoutine" onclick="displayRoutine()">Display Routine</button>
+
+<br><br>
+
+<script src="skincare.js"></script>
+</body>
+</html>

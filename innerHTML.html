@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InnerHTML</title>
+    <script>
+        function addSong()
+        {
+          var song1 = document.getElementById("song1");
+          var song2 = document.getElementById("song2");
+          var song3 = document.getElementById("song3");
+
+          song1.innerHTML = ("Chuyen tinh toi");
+          song1.setAttribute("id","color");
+          song2.innerHTML = ("Thang dien");
+          song3.innerHTML = ("Cay cau dua");
+        }
+        window.onload = addSong;
+    </script>
+    <link rel="stylesheet" type="text/css" href="addAttribute.css">
+
+</head>
+<body>
+<h1>My wonderful playlist</h1>
+<ol>
+<li id="song1"></li>
+<li id="song2"></li>
+<li id="song3"></li>
+</ol>
+
+</body>
+</html>

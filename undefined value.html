@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Undefined Value</title>
+    <script>
+        var customer = {
+          name : "Alex",
+          age : 18
+        };
+        function phone(){
+          if (customer.phone === undefined)
+          {
+            var phone = document.getElementById("phone");
+            phone.innerHTML = ("what is your phone number?");
+          }
+        }
+        window.onload = phone;
+
+        var meo = null;
+        console.log(typeof meo);
+
+        function test()
+        {
+          return ("meo meo");
+        }
+        console.log(typeof test);
+
+        var cupcakes = 100;
+
+        do {
+          console.log("with " + cupcakes + " cupcakes I can eat");
+          cupcakes -= 20;
+        } while (cupcakes > 0) ;
+
+        console.log("I dont have anymore cupcake");
+
+        var candy = {
+          "first flavor" : "peanut",
+          "second flavor" : "berry",
+          "third flavor" : "coconut"
+        };
+        for (var flavor in candy)
+        {
+          console.log("My " + flavor + " is " + candy[flavor]);
+        }
+
+        var sweets = ["peanut", "berry", "coconut"];
+        for (flavor in sweets)
+        {
+          console.log(sweets[flavor]);
+        }
+
+        for (var i = 0; i <= 10; i++)
+        {
+          if (i === 4 || i === 7)
+          {
+            continue;
+          }
+            console.log(i);
+        }
+
+        function addFlavor(flavor, scoop){
+          console.log("Add " + scoop + " scoops of " + flavor + " flavor ice-cream");
+        }
+        addFlavor("strawberry", 7);
+
+        function calculatePrice(scoop)
+        {
+          return scoop * 1.5;
+        }
+        var scoop = 5;
+        var price = calculatePrice(scoop);
+        console.log("Your bill is " + price + " euro for " + scoop + " scoops of ice-cream");
+
+
+    </script>
+</head>
+<body>
+<p>Name: Alex</p>
+<p id="phone"></p>
+<p>Use null: lack of an object</p>
+<p>Use undefined: have not been initialized yet</p>
+
+
+</body>
+</html>

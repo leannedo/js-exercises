@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Hide Object</title>
+
+</head>
+<body style="font-size: 20px">
+<h1 id="head1">How Long</h1>
+<h2 id="head2">So Long</h2>
+<form action="" name="form1">
+    <div>
+        <label for="box1">
+            <input id="box1" type="checkbox" name="head1" onclick="showHide();" checked="checked"/>
+            <span>Show first heading</span>
+        </label>
+        <br>
+        <label for="box2">
+            <input id="box2" type="checkbox" name="head2" onclick="showHide();" checked="checked"/>
+            <span>Show second heading</span>
+        </label>
+    </div>
+</form>
+<br>
+<br>
+<div style="text-align: center" id="demo"></div><br><br>
+<div style="text-align: center" id="milkTea"></div><br><br>
+<div style="text-align: center" id="animal"></div><br><br>
+<div style="text-align: center" id="count"></div><br><br>
+<script>
+  function showHide(){
+    var head1 = document.getElementById("head1");
+    var head2 = document.getElementById("head2");
+    var box1 = document.getElementById("box1").checked;
+    var box2 = document.getElementById("box2").checked;
+    head1.style.visibility = box1 ? "visible" : "hidden";
+    head2.style.visibility = box2 ? "visible" : "hidden";
+  }
+
+  function bakeCake(flour, milk)
+  {
+        var demo = document.getElementById("demo");
+        demo.innerHTML = ("bake cake uses " + flour + " gram of flour and " + milk + " litre of milk");
+  }
+  bakeCake(100,2.5);
+
+  function milkTea(p) //parameter and argument don't need to have 2 different names.
+  {
+      return count = p * 3;
+  }
+  var packet = 8;
+  var shop = milkTea(packet); //argument
+
+  var fillIn = document.getElementById("milkTea");
+  fillIn.innerHTML = ("Shop for milk tea : " + shop + " packets of milk tea powder.");
+
+  var dayLife = 5;
+  function yourAnimal(a)
+  {
+    var i = a / dayLife; //with var : local - without : global
+    if (i <= 0)
+    {
+      return "Dolphin";
+    }
+    else
+    {
+      return "Whale";
+    }
+  }
+  var creature = 20;
+  animal = yourAnimal(creature);
+  var write = document.getElementById("animal");
+  write.innerHTML = ("Your animal is : " + animal);
+
+  var scores = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54, 48, 69,
+    34, 55, 51, 52, 44, 51, 69, 64, 66, 55, 52, 61,
+    46, 31, 57, 52, 44, 18, 41, 53, 55, 61, 51, 44];
+
+  var costs = [.25, .27, .25, .25, .25, .25,
+    .33, .31, .25, .29, .27, .22,
+    .31, .25, .25, .33, .21, .25,
+    .25, .25, .28, .25, .24, .22,
+    .20, .25, .30, .25, .24, .25,
+    .25, .25, .27, .25, .26, .29];
+
+  function printAndGetHighScore(scores) {
+    var output;
+    var highScore = 0;
+    for (var i = 0; i < scores.length; i++) {
+      output = ("Bubble number " + i + " scores " + scores[i] + " points.");
+      console.log(output);
+      if (scores[i] > highScore) {
+        highScore = scores[i];
+      }
+    }
+    return highScore;
+  }
+
+  function getBestResults( scores, highScore ) {
+      var bestSolutions = [] ;
+      for (var i = 0 ; i < scores.length ; i++) {
+        if ( scores[i] === highScore ) {
+          bestSolutions.push(i) ;
+        }
+      }
+      return bestSolutions;
+  }
+
+  function getLowCostHighScore (scores, costs, highScore)
+  {
+    cost = 100 ;
+    var index ;
+    for ( var i = 0 ; i < scores.length ; i++){
+      if (scores[i] === highScore)
+      {
+        if (costs[i] < cost)
+        {
+          index = i;
+          cost = costs[i];
+        }
+      }
+    }
+    return index;
+  }
+  var highScore = printAndGetHighScore(scores);
+  console.log ("Total bubble tests: " + scores.length);
+  console.log ("Highest score of all: " + highScore);
+
+  var bestSolutions = getBestResults(scores, highScore);
+  console.log ("Solutions with the highest score: " + bestSolutions);
+
+  var mostCostEffective = getLowCostHighScore(scores, costs, highScore);
+  console.log ("Bubble number " + mostCostEffective + " is the most cost effective and at the cost of " + cost);
+
+  function getSecret(file, secretPassword)
+  {
+    file.opened = file.opened + 1;
+    if (secretPassword === file.password)
+    {
+      return file.contents;
+    }
+    else
+    {
+      return ("No secret for you!");
+    }
+  }
+
+  function setSecret (file, secretPassword, secret)
+  {
+    if (secretPassword === file.password)
+    {
+      file.opened = 0;
+      file.contents = secret;
+    }
+  }
+  var secretFile =
+  {
+    password: 2,
+    opened: 0,
+    contents: "Meet at Apple"
+  };
+
+  var secret = getSecret(secretFile, 2);
+  console.log(secret);
+
+  setSecret(secretFile, 2, "Meet at Cambodia"); //pass arguments to function
+//after updating
+  secret = getSecret(secretFile, 2);
+  console.log(secret);
+
+  function makeCar()
+  {
+
+  }
+
+  function presentCar(car)
+  {
+
+  }
+  var carToShow = makeCar();
+  presentCar(carToShow);
+
+  var car = {
+    color: "red",
+    make: "Toyota",
+    year: 2018,
+    started: false,
+    fuel: 0,
+
+    start: function()
+    {
+      this.started = true;
+    },
+
+    stop: function()
+    {
+      this.started = false;
+    },
+
+    drive: function(){
+      if (this.started)
+      {
+        if (this.fuel > 0){
+          alert ("Broom Broom");
+          this.fuel = this.fuel - 1;
+        }
+        else
+        {
+          alert("Fill the tank first");
+          this.stop();
+        }
+      }
+      else
+      {
+        alert ("Please start the car first");
+      }
+    },
+
+    addFuel: function(amount)
+    {
+      this.fuel = this.fuel + amount;
+      alert("You fill " + amount + " gas");
+    }
+  };
+
+  car.drive();
+  car.addFuel(30);
+
+  var chevy = {
+    model: "Toyota",
+    color: "red"
+  };
+
+</script>
+</body>
+</html>

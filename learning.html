@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning</title>
+    <style>
+
+        #style
+        {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #user-plan-container
+        {
+            border: 30px;
+            margin-left: 100px;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="style">
+    <span> SX: </span> <span id="sx">  </span>
+    <span> SY: </span> <span id="sy">  </span>
+    <span> PX: </span> <span id="px">  </span>
+    <span> PY: </span> <span id="py">  </span>
+    <span> CX: </span> <span id="cx">  </span>
+    <span> CY: </span> <span id="cy">  </span>
+</div>
+<div>
+    <p id="end"></p>
+    <ul id="shopping_list" style="color: blueviolet; font-size: 20pt">
+        <li id="one">Banana</li>
+        <li id="two">Kale</li>
+        <li id="three">Cherry</li>
+        <li id="four">Apple</li>
+    </ul>
+</div>
+
+<div id="user-input-container">
+
+    <form id="user-animal-input">
+        <label for="user-animal">Enter your favorite animal: </label><br>
+        <input type="text" id="user-animal" name="user-animal">
+        <div id="error-message-animal"></div>
+    </form>
+
+    <form id="user-input">
+        <label for="user-name">Create username: </label><br>
+        <input type="text" id="user-name" name="user-name">
+        <div id="error-message"></div><br><br>
+    </form>
+
+    <form id="user-plan-container">
+        <label for="user-plan">Select a package: </label> <br><br>
+        <select id="user-plan" name="user-plan">
+            <option value="Not chosen"></option>
+            <option value="1 month">1 month</option>
+            <option value="1 year">1 year</option>
+        </select><br><br>
+        <div id="package-hint"></div>
+        <input type="checkbox" id="user-check"><label for="user-check">Agree to terms and conditions</label>
+        <div id="check-hint"></div><br><br>
+        <input type="submit" value="Sign up" id="sign-up">
+    </form>
+</div>
+</body>
+<script>
+    let oldItem = document.getElementById("two");
+    oldItem.innerHTML = "Peach";
+
+    let list, newItem, newItemValue;
+      list = document.getElementById("shopping_list");
+      newItem = document.createElement("li");
+      newItemValue = document.createTextNode("Wine");
+      newItem.appendChild(newItemValue);
+      list.appendChild(newItem);
+
+    let removedItem, removeItemParent;
+    removedItem = document.getElementById("three");
+    removeItemParent = removedItem.parentNode;
+    removeItemParent.removeChild(removedItem);
+
+
+
+
+    function checkUserName()
+    {
+      let errorMsg = document.getElementById("error-message");
+      if (this.value.length < 5)
+      {
+        errorMsg.textContent = "Username must be 5 characters or more";
+      }
+      else
+      {
+        errorMsg.textContent = "";
+      }
+    }
+    document.getElementById("user-name").addEventListener("blur", checkUserName);
+
+
+    let userAnimal = document.getElementById("user-animal");
+
+    function checkAnimalName(minLength, animal)
+    {
+      let errorMsg = document.getElementById("error-message-animal");
+      if (animal.value.length < minLength)
+      {
+        errorMsg.textContent = "Animal name must be " + minLength + " characters or more";
+      }
+      else
+      {
+        errorMsg.textContent = "";
+      }
+    }
+
+      userAnimal.addEventListener("blur", function (e) {
+        checkAnimalName(6, e.target); //e.target is the element that attached the event listener
+      }, false);
+
+
+
+    let signUp, packageHint, checkHint, userCheck, userPlan, userPlanContainer;
+    signUp = document.getElementById("sign-up");
+    packageHint = document.getElementById("package-hint");
+    checkHint = document.getElementById("check-hint");
+    userPlan = document.getElementById("user-plan");
+    userPlanContainer = document.getElementById("user-plan-container");
+    userCheck = document.getElementById("user-check");
+
+
+    function checkPackage()
+    {
+      let packageValue = this.options[this.selectedIndex].value;
+      if (packageValue === "")
+      {
+        packageHint.innerText = "Please select a package";
+      }
+      else if (packageValue === "1 month")
+      {
+        packageHint.innerText = "You will save more with 1 year plan";
+      }
+      else
+      {
+        packageHint.innerText = "Good choice";
+      }
+    }
+
+    function checkTerms(event)
+    {
+      if (!userCheck.checked)
+      {
+        checkHint.innerText = "You must agree to the terms.";
+        event.preventDefault();
+      }
+    }
+
+    signUp.addEventListener("click", checkTerms, false);
+    userPlan.addEventListener("change", checkPackage, false);
+
+
+
+</script>
+</html>

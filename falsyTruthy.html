@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Falsy_Truthy</title>
+    <script>
+        function lieDetector()
+        {
+          var lies = 0;
+
+          var stoleCar = 0; //value 0
+          if (stoleCar)
+          {
+            console.log("You stole the car!");
+            lies++;
+          }
+
+          var stoleGold = []; //array
+          if (stoleGold)
+          {
+            console.log ("You stole gold!");
+            lies++;
+          }
+
+          var feeTicket = { //object
+            appear: true
+          };
+          if (feeTicket.appear)
+          {
+            console.log("You receive a fee ticket");
+            lies++;
+          }
+          return lies;
+        }
+        var tellLies = lieDetector();
+        console.log ("You tell " + tellLies + " lies!");
+        if (tellLies === 2)
+        {
+          console.log("You commit many crimes");
+        }
+
+        var text = "YOU SHOULD NOT SHOUT AT HER";
+        var changeText = text.toLowerCase();
+        if (changeText.length > 0)
+        {
+          alert(changeText);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

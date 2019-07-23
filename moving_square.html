@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moving Square</title>
+    <style>
+        #square
+        {
+            width: 300px;
+            height: 300px;
+            background-color: lightcoral;
+            position: absolute;
+            top: 200px;
+            left: 300px;
+        }
+
+        #buttons
+        {
+            position: absolute;
+            top: 80px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+<form action="" name="form1">
+    <div id="buttons">
+        <input type="button" name="left" value="Left" onclick="position(-1,0)"/>
+        <input type="button" name="right" value="Right" onclick="position(1,0)"/>
+        <input type="button" name="up" value="Up" onclick="position(0,-1)"/>
+        <input type="button" name="down" value="Down" onclick="position(0,1)"/>
+        <input type="button" name="hidden" value="Hidden" onclick="hideSquare()"/>
+        <input type="button" name="show" value="Show" onclick="showSquare()"/>
+    </div>
+
+    <div id="square" ></div>
+</form>
+<script>
+    var left = 300; move = 200;
+    function position (x, y)
+    {
+        left += 10*x;
+        move += 10*y;
+        var obj = document.getElementById("square");
+        obj.style.left = left + "px";
+        obj.style.top = move + "px";
+    }
+
+    function hideSquare()
+    {
+      obj = document.getElementById("square");
+      obj.style.display = "none";
+    }
+
+    function showSquare()
+    {
+      obj = document.getElementById("square");
+      obj.style.display = "block";
+    }
+</script>
+</body>
+</html>

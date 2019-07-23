@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bean Order Form</title>
+</head>
+<body>
+<form action="">
+    <p>
+        <label for="bean_chosen">Choose Your Bean: </label><br>
+        <select name="bean_chosen" id="bean_chosen">
+            <option value="house_blend">House Blend</option>
+            <option value="shade_brown">Shade Brown</option>
+            <option value="organic_guatemala">Organic Guatemala</option>
+            <option value="kenya">Kenya</option>
+        </select>
+    </p>
+
+    <p>Type: <br>
+        <input type="radio" name="type" value="Whole Bean" id="whole_bean">
+            <label for="whole_bean">Whole Bean</label><br>
+        <input type="radio" name="type" value="Ground" id="ground"checked>
+            <label for="ground">Ground</label><br>
+    </p>
+
+    <p>Extras: <br>
+        <input type="checkbox" name="extras" value="Gift Wrap" id="gift_wrap">
+            <label for="gift_wrap">Gift Wrap</label><br>
+        <input type="checkbox" name="extras" value="Include Catalog with Order" id="catalog_include" checked>
+            <label for="catalog_include">Include Catalog with Order</label><br>
+    </p>
+
+    <p>Ship to<br>
+
+        <label for="name">Name: </label>
+            <input type="text" name="name" id="name">
+        <br>
+
+        <label for="address">Address: </label>
+            <input type="text" name="address" id="address">
+        <br>
+
+        <label for="city">City: </label>
+            <input type="text" name="city" id="city">
+        <br>
+
+        <label for="state">State: </label>
+            <input type="text" name="state" id="state">
+        <br>
+
+        <label for="zip">Zip: </label>
+            <input type="text" name="zip" id="zip">
+        <br>
+
+        <label for="comment">Customer Comment: </label>
+            <textarea name="customer_comment" cols="10" rows="4" id="comment"></textarea>
+        <br>
+    </p>
+
+        <input type="button" value="Submit">
+</form>
+<script>
+    var scoops = 5;
+    // while (scoops > 0)
+    // {
+    //   document.write("I love ice cream<br>");
+    //   scoops = scoops -1;
+    // }
+    // if (scoops > 3)
+    // {
+    //   alert("Ice cream is running low");
+    // }
+
+    // var i = 0;
+    // var name = "Joe";
+    // while (i < 2) {
+    //   document.write("Happy birthday to you<br>");
+    //   i = i + 1;
+    // }
+    // document.write("Happy birthday dear " + name + ",<br>");
+    // document.write("Happy birthday to you<br>");
+
+    var word = "bottles";
+    var count = 9;
+    while (count > 0)
+    {
+    document.write(count + " " + name + " of beer on the wall");
+    document.write(count + " " + name + " of beer");
+    document.write("Take one down, pass it around");
+    count = count - 1;
+    if (count > 0)
+    {
+      document.write(count + "" + word + " of beer on the wall");
+    }
+    else
+    {
+      document.write("No more " + name + " of beer on the wall");
+    }
+    }
+
+
+</script>
+</body>
+</html>
