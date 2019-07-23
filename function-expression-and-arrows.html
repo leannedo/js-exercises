@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ///this is where you write code//////
+        let name = function name(){  ///function expression
+            console.log("Mia");
+        };
+        /////////////////////////////////////////////////////
+        function askQuestion(question, yes, no){  
+            ///function declaration can be called earlier in the script
+            ///askQuestion("Are you OK?", showYes, showNO); can be called 
+            ///before we declare the function 
+            if(confirm(question)) yes()
+            else no()
+        }
+
+        function showYes(){ //callback for yes
+            alert("You OK");
+        }
+
+        function showNO(){ //callback for no
+            alert("You not OK");
+        }
+
+        askQuestion("Are you OK?", showYes, showNO);
+        //above the same as below
+        /////////////////////////////////////////////////////
+        askOpinion("Do you agree?",
+        function() {alert("You agree")}, //anonymous callback
+        function() {alert("you don't agree")}); //anonymous callback
+
+        function askOpinion(ask, yes, no){
+            if(confirm(ask)) yes()
+            else no()
+        }
+        ////////////////////////////////////////////////////
+        let age = prompt("age?","");
+        if(age>18){
+            function sms(){
+                alert("welcome");
+            }
+        }
+        else{
+            function sms(){
+                alert("no welcome");
+            }
+        }
+        sms();
+        /////////////////////////////////////////////////
+        let food = prompt("Your favorite food?", "");
+        let menu = (food == "cake")?
+            function() {alert("Yummy");}:
+            function() {alert("Nice");};
+        menu();
+        /////////////////////////////////////////////////
+        ///arrow function
+        let lunch = (a,b,c) => a + " " + b + " " + c;
+        console.log(lunch("cake", "bun", "bread")); 
+
+        let sayHi = () => console.log("Hello!");
+        sayHi();
+
+        let plus = n => n+10;
+        console.log(plus(5));
+
+        let dinner = prompt("Dinner?", "");
+        let recipe = (dinner == "fish")?
+        () => console.log("No recipe"):
+        () => console.log("More recipe");
+        recipe();
+        ////////////////////////////////////////////////
+        function reply(message, yes, no){
+            if(confirm(message)) yes()
+            else no();
+        }
+
+        reply(
+            "Do you go?",
+        () => console.log("You go"),
+        () => console.log("You don't go"));
+
+
+        
+
+
+    </script>
+</body>
+</html>
