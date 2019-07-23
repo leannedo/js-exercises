@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Box+Font</title>
+    <style>
+        :root
+        {
+            --primary_color:lightcoral;
+        }
+        html, body
+        {
+            background-color: cyan;
+        }
+        section
+        {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+        }
+        .container
+        {
+            background-color: lightseagreen;
+            display:flex;
+            justify-content: space-around;
+            width:100vw;
+        }
+        .box, .box1, .box2, .box3
+        {
+            width: 200px;
+            height:200px;
+            background-color: var(--primary_color);
+            border: solid 20px mediumvioletred;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin:20px;
+            padding:10px;
+        }
+        .box2
+        {
+            /*display:none;*/
+        }
+        .box1
+        {
+            /*visibility: hidden;*/
+        }
+        .content, .content1, .content2, .content3
+        {
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+
+            background-color: white;
+            font: italic bold 40px;
+        font-family: "Diamonds Regular", Arial, sans-serif;
+            width:3em;
+            height:3em;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+html, body
+<section>section
+<div class="container">container
+        <div class="box">box
+            <span class="content">
+                BOX
+            </span>
+        </div>
+        <div class="box1">
+            <span class="content1">BOX 1</span>
+        </div>
+        <div class="box2">
+            <span class="content2">BOX 2</span>
+        </div>
+        <div class="box3">
+            <span class="content3">BOX 3</span>
+        </div>
+</div>
+</section>
+
+
+</body>
+</html>

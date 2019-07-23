@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ButtonDemo.html by Kari Laitinen</title>
+<style>
+.centered
+{
+   text-align: center;
+   margin:     64px auto;
+}
+</style>
+<script>
+  function change_text() {
+    var text_element = document.getElementById("text_on_screen");
+    if (text_element.innerHTML == "Monday")
+    {text_element.innerHTML = "Tuesday";}
+    else if (text_element.innerHTML=="Tuesday")
+    {text_element.innerHTML = "Wednesday";}
+    else if (text_element.innerHTML=="Wednesday")
+    {text_element.innerHTML = "Thursday";}
+    else if (text_element.innerHTML=="Thursday")
+    {text_element.innerHTML = "Friday";}
+    else if (text_element.innerHTML=="Friday")
+    {text_element.innerHTML = "Saturday";}
+     else if (text_element.innerHTML=="Saturday")
+    {text_element.innerHTML = "Sunday";}
+     else
+    {text_element.innerHTML = "Monday";}
+  }
+</script>
+
+</head>
+
+<body>
+
+   <h1 id=text_on_screen class=centered>Monday</h1>
+
+   <div class=centered>
+      <button onclick="change_text()">Change Day</button>
+   </div>
+
+</body>
+</html> 

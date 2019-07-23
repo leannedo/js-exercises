@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>GuessAWord.html &copy; Kari Laitinen</title>
+<!-- 
+   2014-01-16 This file was created for http://www.naturalprogramming.com/
+   2016-01-31 Last modification
+
+   This page demonstrates how to
+      - create <button> elements with JavaScript
+      - handle several buttons with a single JavaScript function
+      - use the Array methods push() and join()
+
+-->
+
+<style>
+
+.centered
+{
+   text-align: center;
+   margin:     64px auto;    /* top and bottom margins are set,
+                                right and left margins are automatic */
+
+   font-family: monospace ;  /* Characters will have equal widths. */
+}
+
+
+body
+{
+   background-color: WhiteSmoke ;
+}
+
+/* An <h1> element will be used to show the letters of the secret word. */
+
+h1
+{
+   font-size:       2.8em ;  /* 2.8 times the normal font size. */
+   letter-spacing:  6px ;    /* a little more space between the letters. */
+}
+
+button
+{
+   width:  28px ;
+   height: 36px ;
+   font-size: 18px ;
+   color: Blue ; /* text color on the button. */
+   background-color: YellowGreen ;
+}
+
+button:hover         /* When the mouse cursor is hovering over the button ... */
+{
+    opacity: 0.8 ;   /* ... the button background becomes somewhat transparent. */
+}
+
+</style>
+
+<script>
+
+var word_to_be_guessed = "SAIGON" ;
+
+var guessed_characters = [] ;
+
+// After the following loop has been executed, the array of guessed
+// characters will contain as many strings "-" as there are characters
+// in the word to be guessed.
+
+for ( var string_counter = 0 ;
+          string_counter < word_to_be_guessed.length ;
+          string_counter ++ )
+{
+   guessed_characters.push( "-" ) ;
+}
+
+// The following JavaScript function is called when one of the buttons is
+// pressed. A reference to the button object is received as a parameter.
+// With the textContent attribute we can find out what is the text written
+// on the button, i.e., we find out what letter was selected.
+
+function handle_button_press( pressed_button )
+{
+   var selected_letter = pressed_button.textContent ;
+
+   for ( character_index in guessed_characters )
+   {
+      if ( word_to_be_guessed.charAt( character_index ) == selected_letter )
+      {
+         guessed_characters[ character_index ] = selected_letter ;
+      }
+   }
+
+   // The array containing the guessed characters will be converted
+   // to a string with the join() method. The empty string "" as a parameter
+   // specifies that nothing will be added between the strings.
+
+   document.getElementById( "secret_word_text_id" ).innerHTML =
+                                                guessed_characters.join( "" ) ;
+}
+</script>
+
+</head>
+
+<body>
+
+   <div class=centered>
+      <br>&nbsp;  <!-- Make some extra space before anything else. -->
+      <p>Each hyphen sign '-' below hides a letter of a word.</p>
+      <p>Try to find out the word by pressing the buttons!</p>
+   </div>
+
+   <h1 id=secret_word_text_id class=centered>Hello!</h1>
+
+   <div class=centered>
+
+   <script>
+
+      // Here we have JavaScript code inside an HTML <div> element.
+      // This JavaScript code is executed at the place where it is located.
+      // This generates the buttons that contain letters as their texts.
+
+      var letters = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+                      'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'W',
+                      'X', 'Y', 'Z' ] ;
+
+      for ( var letter_index = 0 ;
+                letter_index < letters.length ;
+                letter_index ++ )
+      {
+         document.write( "<button onclick=\"handle_button_press( this )\">" + letters[ letter_index ] + "</button>" ) ;
+
+      }
+
+      document.getElementById( "secret_word_text_id").innerHTML = 
+                                                guessed_characters.join( "" ) ;
+   </script>
+
+   </div>
+
+</body>
+</html> 
+
+
+<!--
+
+// Here is another possibility to initialize the array of guessed 
+// characters. This does not work with very long words.
+
+var guessed_characters = [ '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',
+                           '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',
+                           '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' ] ;
+
+We'll use the slice() method to shorten the array of guessed characters,
+// so that its length equals to the length of the word to be guessed.
+// The array of guessed characters contains no letters at the beginning
+// since no characters have been guessed.
+
+guessed_characters = guessed_characters.slice( 0, word_to_be_guessed.length ) ;
+
+
+-->
+
+

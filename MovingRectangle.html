@@ -1,0 +1,248 @@
+<!DOCTYPE html>  <!-- This is an HTML 5 document. -->
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<title>MovingRectangle.html &copy; Kari Laitinen</title>
+
+<!-- 2014-01-14 File created.
+     2016-01-22 Last modification.
+
+   In this page CSS styles are manipulated with JavaScript.
+
+   http://www.w3schools.com/js/js_htmldom_css.asp
+
+   The following link contains a, perhaps valid, list of properties that can
+   be set with JavaScript.
+   http://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-ElementCSSInlineStyle
+
+   This page is also an example of using absolute positioning and centering of
+   <div> elements. The following is said at w3schools.com:
+
+      - An absolute position element is positioned relative to the first
+        parent element that has a position other than static.
+        If no such element is found, the containing block is <html>
+
+      - Absolutely positioned elements are removed from the normal flow.
+        The document and other elements behave like the absolutely positioned
+        element does not exist.
+
+      - Absolutely positioned elements can overlap other elements.
+
+   In this page #moving_rectangle is absolutely positioned in relation to
+   #centered_container.
+-->
+
+
+<style type="text/css">
+
+#centered_container
+{
+   position: absolute ;
+   top: 30px ;
+   left: 50% ;
+   width:  800px ;
+   height: 600px ;
+   margin-left: -400px ;
+
+   background-color: AliceBlue ;
+   border: 1px solid LightSkyBlue ;
+}
+
+#centered_ui_components
+{
+    text-align: center;   /* This centers the buttons etc. */
+    background-color: LightSkyBlue ; /* Somewhat darker than AliceBlue */
+    padding:10px;
+}
+
+#moving_rectangle
+{
+   position: absolute;
+   width: 240px ;
+   height: 200px ;
+   left: 274px ;   /* "container width" / 2 - "rectangle width" / 2 - "border width"
+                       800 / 2 - 240 / 2 - 4 */
+   top:  200px ;
+   background-color: red ;
+   border: 6px solid black ;
+}
+
+</style>
+
+<script type="text/javascript">
+
+   var rectangle_position_left = 274 ;
+   var rectangle_position_top  = 200 ;
+   var rectangle_height = 200 ;
+   var rectangle_width = 240 ;
+
+   function left_button_clicked()
+   {
+      rectangle_position_left -= 4 ;
+
+      rectangle_element = document.getElementById( "moving_rectangle" ) ;
+
+      // Here we set style property named "left". The value being set
+      // is a string. Operator + converts the value of variable
+      // rectangle_position_left to a string and adds the string "px"
+      // to the string.
+      rectangle_element.style.left = rectangle_position_left + "px" ;
+
+      console.log( "\n left " + rectangle_element.style.left ) ; 
+   }
+
+   function down_button_clicked()
+   {
+      rectangle_position_top += 4 ;
+      rectangle_element = document.getElementById( "moving_rectangle" ) ;
+      rectangle_element.style.top = rectangle_position_top + "px" ;
+   }
+
+   function up_button_clicked()
+   {
+      rectangle_position_top -= 4 ;
+      rectangle_element = document.getElementById( "moving_rectangle" ) ;
+      rectangle_element.style.top = rectangle_position_top + "px" ;
+   }
+
+   function right_button_clicked()
+   {
+      rectangle_position_left += 4 ;
+      rectangle_element = document.getElementById( "moving_rectangle" ) ;
+      rectangle_element.style.left = rectangle_position_left + "px" ;
+   }
+
+   function change_rectangle_color()
+   {
+      // The color specifications in the following array
+      // must match the order of colors in the HTML <select> tag.
+      // Colors can be specified either with numerical values, or with
+      // strings that are listed, for example, in the following page
+      // http://www.w3schools.com/html/html_colornames.asp
+
+      var selectable_colors = [ "Red", "Green", "Blue", "Yellow", "Magenta",
+                                "rgb( 0, 255, 255 )",   // Color "Cyan"
+                                "rgb( 255, 255, 255 )", // Color "White"
+                                "Khaki", "Gray", "Olive","rgb(124, 252, 0)" ] ;
+
+      var color_index =
+             document.getElementById( "color_selection_list" ).selectedIndex ;
+
+      rectangle_element = document.getElementById( "moving_rectangle" ) ;
+
+      rectangle_element.style.background = selectable_colors[ color_index ] ;
+   }
+
+   function enlarge_rectangle()
+   {
+     rectangle_element = document.getElementById("moving_rectangle");
+     rectangle_height += 4;
+     rectangle_width += 4;
+     rectangle_element.style.height = rectangle_height + "px";
+     rectangle_element.style.width = rectangle_width + "px";
+   }
+
+   function shrink_rectangle()
+   {
+     rectangle_element = document.getElementById("moving_rectangle");
+     rectangle_height -= 4;
+     rectangle_width -= 4;
+     rectangle_element.style.height = rectangle_height + "px";
+     rectangle_element.style.width = rectangle_width + "px";
+   }
+
+   function change_border()
+   {
+     var borderSize = ["2px","4px","6px","8px","10px"];
+     var borderIndex = 2;
+     var borderObj = document.getElementsByClassName("border-input");
+     for (var i=0; i < borderObj.length; i++)
+     {
+       if (borderObj[i].checked)
+       {
+         borderIndex = i;
+       }
+     }
+     rectangle_element = document.getElementById("moving_rectangle");
+     rectangle_element.style.borderWidth = borderSize[borderIndex];
+   }
+
+   function reset()
+   {
+     rectangle_position_left = 274;
+     rectangle_position_top = 200;
+     rectangle_height = 200;
+     rectangle_width = 240;
+     rectangle_element = document.getElementById( "moving_rectangle" ) ;
+     rectangle_element.style.top = rectangle_position_top + "px" ;
+     rectangle_element.style.left = rectangle_position_left + "px" ;
+     rectangle_element.style.height = rectangle_height + "px";
+     rectangle_element.style.width = rectangle_width + "px";
+     rectangle_element.style.background = "red";
+   }
+
+</script>
+
+</head>
+
+<body>
+
+   <div id=centered_container>
+
+      <div id=centered_ui_components>
+         <!-- With the <button> tag we can define buttons and specify the methods
+              that will be called when the buttons are pressed. Buttons
+              could alternatively be defined with the <input> tag.
+
+              In HTML we must write &lt; and &gt; in order to produce the
+              characters < and >, i.e., 'less than' and 'greater than'. -->
+
+         <button onclick="left_button_clicked()">  &lt;  </button>
+         <button onclick="down_button_clicked()"> Down </button>
+         <button onclick="up_button_clicked()">  Up  </button>
+         <button onclick="right_button_clicked()">  &gt;  </button>
+          <button onclick="reset()"> Reset </button>
+          <button onclick="enlarge_rectangle()"> Enlarge </button>
+          <button onclick="shrink_rectangle()"> Shrink </button>
+
+
+         <!-- With the <select> tag we create a drop-down list. The selectable
+              options are defined with the <option> tag. The method 
+              change_rectangle_color() will be called automatically when the user
+              makes a selection. -->
+
+         <select id="color_selection_list" onChange="change_rectangle_color()">
+            <option selected>Red</option>
+            <option>Green</option>
+            <option>Blue</option>
+            <option>Yellow</option>
+            <option>Magenta</option>
+            <option>Cyan</option>
+            <option>White</option>
+            <option>Khaki</option>
+            <option>Gray</option>
+            <option>Olive</option>
+            <option>Lawn Green</option>
+         </select>
+
+          <form onchange="change_border()">Border
+          <input type="radio" class="border-input" name="border" value="2px">2px
+          <input type="radio" class="border-input" name="border" value="4px">4px
+          <input type="radio" class="border-input" name="border" value="6px" checked>6px
+          <input type="radio" class="border-input" name="border" value="8px">8px
+          <input type="radio" class="border-input" name="border" value="10px">10px
+          </form>
+
+
+
+      </div> <!-- end of centered_ui_components -->
+
+      <!-- The content of the following <div> is empty as its properties are
+           specified with a CSS definition. -->
+
+      <div id=moving_rectangle></div>
+   </div> <!-- end of centered_container  -->
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PictureViewing.html by Kari Laitinen</title>
+<!-- 
+   2014-01-13 File created for http://www.naturalprogramming.com/
+   2014-01-19 Last modification
+
+   This page shows image files that are located in a subfolder
+   named "images". With the Next button it is possible to see the
+   next image.
+
+   This page demonstrates how to modify an <img> element
+   by using JavaScript.
+
+   The page http://www.w3schools.com/jsref/dom_obj_image.asp
+   tells what properties of an Image object can be modified in
+   JavaScript. Each <img> element in HTML corresponds to an Image
+   object in JavaScript.
+
+   The picture files of various famous paintings have been obtained 
+   from the Internet.
+
+   The copyrights of the pictures are owned by other institutions
+   than the author of this program.
+
+   Les Demoiselles d'Avignon (1907) by Pablo Picasso is at MOMA (Museum
+   of Modern Art), New York.
+   Mona Lisa (1503-6) by Leonardo da Vinci is at Louvre in Paris, France.
+   Persistence of Memory (1931) by Salvador Dali is at MOMA, New York.
+   The Night Watch (1642) of Rembrandt is at Rijksmuseum, Amsterdam.
+   The 'Yellow Field' painting is made by Vincent van Gogh who lived
+   1853-1890.
+
+-->
+
+<style>
+
+.centered
+{
+   text-align: center;
+   margin:     16px auto;    /* top and bottom margins are set,
+                                right and left margins are automatic */
+}
+button
+{
+    background-color: orangered;
+    color:white;
+    font-family: Verdana;
+    font-size:20px;
+    padding:20px;
+    border-style:outset;
+    border-radius:15px;
+}
+    figcaption{
+        color:navy;
+    }
+</style>
+
+<script>
+
+var  picture_file_names  = [ "images/yellow_field_by_vincent_van_gogh.jpg",
+                             "images/night_watch_by_rembrandt.jpg",
+                             "images/persistence_of_memory_by_dali.jpg",
+                             "images/demoiselles_de_avignon_by_picasso.jpg",
+                             "images/mona_lisa_by_leonardo.jpg",
+                                "images/moomin.jpg"] ;
+
+var picture_captain = ["Yellow Field by Vincent Van Gogh","Night Watch by Rembrandt",
+                        "Persistence of Memory by Dali","Demoiselles by Picasso",
+                        "Mona Lisa by L.D", "Moomin by Me"];
+
+var  picture_index = 0 ;
+
+function show_next_picture()
+{
+   picture_index ++ ;
+
+   if ( picture_index >= picture_file_names.length )
+   {
+      picture_index = 0 ;
+   }
+   // First we get a reference to the img element in HTML code.
+
+   var image_element = document.getElementById( "image_element_id" ) ;
+
+   // Then we rewrite the src attribute of the img element.
+
+   image_element.src = picture_file_names[ picture_index ] ;
+    image_element.style.width = "500px";
+
+    var name_element = document.getElementById("nameID");
+    name_element.innerHTML = picture_captain[picture_index];
+
+}
+
+function showPrevious()
+{
+  if ( picture_index > 0)
+  {
+    picture_index-- ;
+  }
+  else if ( picture_index == 0)
+  {
+    picture_index = picture_file_names.length-1; //because at position 6th, index is 5
+  }
+  var image_element = document.getElementById("image_element_id");
+  image_element.src = picture_file_names[ picture_index ] ;
+  image_element.style.width = "500px";
+
+  var name_element = document.getElementById("nameID");
+  name_element.innerHTML = picture_captain[picture_index];
+}
+
+function enlargePicture()
+{
+  var image_element = document.getElementById("image_element_id");
+  image_element.style.width = "1000px";
+}
+
+function shrinkPicture()
+{
+  var image_element = document.getElementById("image_element_id");
+  image_element.style.width = "300px";
+}
+
+</script>
+
+</head>
+
+<body>
+
+   <div class=centered>
+       <button onclick="showPrevious()">Previous</button>
+       <button onclick="show_next_picture()">Next</button>
+       <button onclick="enlargePicture()">Enlarge</button>
+       <button onclick="shrinkPicture()">Shrink</button>
+
+   </div>
+
+   <div class=centered>
+      <img onclick="show_next_picture()"
+           id=image_element_id
+           src="images/yellow_field_by_vincent_van_gogh.jpg">
+       <figcaption id="nameID">Yellow Field by Van Gogh</figcaption>
+   </div>
+
+</body>
+</html> 

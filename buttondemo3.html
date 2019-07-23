@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ButtonDemo.html by Kari Laitinen</title>
+    <style>
+        .centered
+        {
+            text-align: center;
+            margin:     64px auto;
+        }
+    </style>
+    <script>
+        var i=0;
+        var day=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+        var j=0;
+        var month=["January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+      function change_day() {
+        var day_element = document.getElementById("day_on_screen");
+        day_element.innerHTML=day[i];
+        i++;
+      }
+    </script>
+
+</head>
+
+<body>
+
+<h1 id=day_on_screen class=centered>Monday</h1>
+<h1 id=month_on_screen class=centered>January</h1>
+
+<div class=centered>
+    <button onclick="change_day()">Change Day</button>
+    <button onclick="change_month()">Change Month</button>
+</div>
+
+</body>
+</html>

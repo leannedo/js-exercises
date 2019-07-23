@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GuessAWordNgoc</title>
+    <style>
+        p,.alphabet
+        {
+            text-align: center;
+            font-family: "Neo Sans Intel";
+            font-size: 20px;
+        }
+        body
+        {
+            background-color: lightcyan;
+        }
+        .space
+        {
+            font-size: 60px;
+            letter-spacing: 6px;
+        }
+        button
+        {
+            padding:5px;
+            background-color: lightcoral;
+            font-family: "Neo Sans Intel";
+            font-size: 20px;
+            color: navy;
+            width:30px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        button:hover
+        {
+            background-color: cornflowerblue;
+        }
+    </style>
+    <script>
+        var wordArray = ["SAIGON", "HAIPHONG", "DANANG", "SAPA", "HOIAN"];
+        var wordRandomIndex = Math.floor( Math.random() * wordArray.length );
+        var wordRandom = wordArray[wordRandomIndex];
+        var timeGuess = 0;
+        var buttonCount = document.getElementsByClassName("buttonCount");
+
+        var spaceGuess = [];
+        for (i=0; i < wordRandom.length; i++)
+        {
+          spaceGuess.push( "-" );
+        }
+
+        function buttonClick (clickedButton)
+        {
+          var selectedLetter = clickedButton.textContent;
+          for (k in spaceGuess) <!--do we know the value of k yet?-- how the computer knows k represents index-->
+          {
+            if (wordRandom.charAt(k) == selectedLetter)
+            {
+              spaceGuess[k] = selectedLetter;
+              timeGuess++;
+
+            }
+          }
+          document.getElementById("takeSpace").innerHTML = spaceGuess.join("");
+        }
+
+    </script>
+</head>
+<body>
+<br>
+<p>
+    Each hyphen sign '-' below hides a letter of a word.<br>
+    Try to find out the word by pressing the buttons!<br>
+    Hint: A city in Vietnam<br>
+</p>
+<p id="takeSpace" class="space"></p>
+<div class="alphabet">
+<script>
+  var alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+                    'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'W',
+                    'X', 'Y', 'Z' ] ;
+
+  for (j=0; j < alphabet.length; j++)
+  {
+    document.write( "<button onclick=\"buttonClick(this)\" class='buttonCount'>" + alphabet[j] + "</button>" )
+  }
+
+  document.getElementById("takeSpace").innerHTML = spaceGuess.join("");
+
+</script>
+    <p>You've guessed: </p>
+    <p id="recordGuess"></p>
+</div>
+</body>
+</html>

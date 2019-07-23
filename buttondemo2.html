@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ButtonDemo.html by Kari Laitinen</title>
+    <style>
+        .center{
+            text-align:center;
+            margin:64px auto;
+            font-family:"Neo Sans Intel";
+            font-size:20px;
+            font-weight:bold;
+        }
+        body{
+            background-color: lightyellow;
+        }
+        button{
+            background-color:orangered;
+            color:white;
+            font-size:20px;
+            padding:20px;
+            border-radius:25px;
+            border-style:outset;
+        }
+        button:hover{
+            background-color:goldenrod;
+            cursor:pointer;
+        }
+
+    </style>
+    <script>
+        var i=0;
+        var j=0;
+
+        var dayArray=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+        var monthArray=["January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+
+      function change_day() {
+        var day_element = document.getElementById("day_on_screen");
+        day_element.innerHTML=dayArray[i];
+        i++;
+        if (i>=dayArray.length)
+        {
+          i=0;
+        }
+      }
+        function change_month() {
+          var month_element = document.getElementById("month_on_screen");
+          month_element.innerHTML=monthArray[j];
+          j++;
+          if (j>=monthArray.length)
+          {
+            j=0;
+          }
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class=center>
+
+    <h1 id=day_on_screen class=centered style="margin:20px"><b>Monday</b></h1><br>
+    <h1 id=month_on_screen class=centered style="margin:20px">January</h1><br>
+    <button onclick="change_day()">Change Day</button>
+    <button onclick="change_month()">Change Month</button>
+
+</div>
+
+</body>
+</html>

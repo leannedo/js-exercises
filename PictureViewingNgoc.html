@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PictureViewingNgoc</title>
+    <style>
+        .center_container
+        {
+            text-align: center;
+            margin: 20px;
+
+        }
+        #takeImages
+        {
+            width:500px;
+            height:500px;
+            margin: 20px;
+            border: 4px dashed;
+        }
+
+        button, select
+        {
+            background-color: orangered;
+            color: white;
+            font-family: "Neo Sans Intel", sans-serif;
+            font-size: 15px;
+            padding: 15px;
+            border-style: outset;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button:hover
+        {
+            background-color: orange;
+        }
+
+    </style>
+    <script>
+        var pictureArray = ["images/moomin1.jpg", "images/moomin2.jpg", "images/moomin3.jpg", "images/moomin4.jpg", "images/moomin5.png", "images/moomin6.jpeg"];
+        var pictureIndex = 0;
+        var pictureWidth = 500;
+        var pictureHeight = 500;
+        var titleArray = ["Moomin", "Moomin Flower", "Grumpy Red", "Moomin Huggy", "Moomin Boat", "Moomin River"];
+        var borderArray = ["dashed", "dotted", "Solid", "Outset", "Groove"];
+        var borderSizeArray = ["2px", "4px", "6px", "8px", "10px"];
+        var borderSizeIndex = 1;
+
+        function nextPicture()
+        {
+          pictureIndex++;
+          if (pictureIndex >= pictureArray.length)
+          {
+            pictureIndex = 0;
+          }
+          var newPicture = document.getElementById("takeImages") ;
+          newPicture.src = pictureArray[pictureIndex] ;
+          var newTitle = document.getElementById("takeTitle") ;
+          newTitle.innerHTML = titleArray[pictureIndex] ;
+        }
+
+        function previousPicture()
+        {
+          if (pictureIndex > 0)
+          {
+            pictureIndex--;
+          }
+          else if (pictureIndex <= 0)
+          {
+            pictureIndex = pictureArray.length - 1 ;
+          }
+          var newPicture = document.getElementById("takeImages");
+          newPicture.src = pictureArray[pictureIndex] ;
+          var newTitle = document.getElementById("takeTitle") ;
+          newTitle.innerHTML = titleArray[pictureIndex] ;
+        }
+
+        function enlargePicture()
+        {
+          pictureWidth += 4;
+          pictureHeight += 4;
+          newPicture = document.getElementById("takeImages");
+          newPicture.style.width = pictureWidth + "px";
+          newPicture.style.height = pictureHeight + "px";
+        }
+
+        function shrinkPicture()
+        {
+          if(pictureWidth > 450) {
+            pictureWidth -= 4;
+            pictureHeight -= 4;
+          }
+          newPicture = document.getElementById("takeImages");
+          newPicture.style.width = pictureWidth + "px";
+          newPicture.style.height = pictureHeight + "px";
+        }
+
+        function changeBorder()
+        {
+          var borderIndex = document.getElementById("takeBorder").selectedIndex;
+          var newPicture = document.getElementById("takeImages") ;
+          newPicture.style.border = borderArray[borderIndex];
+          newPicture.style.borderWidth = borderSizeArray[borderSizeIndex];
+        }
+
+        function changeBorderSize()
+        {
+          var borderSizeObj = document.getElementsByClassName("border_size");
+          for (var i=0; i < borderSizeObj.length; i++)
+          {
+            if (borderSizeObj[i].checked)
+            {
+              borderSizeIndex = i;
+            }
+          }
+          var newPicture = document.getElementById("takeImages");
+          newPicture.style.borderWidth = borderSizeArray[borderSizeIndex];
+
+        }
+
+        function reset()
+        {
+          pictureHeight = 500;
+          pictureWidth = 500;
+          borderWidth = 4;
+          var newPicture = document.getElementById("takeImages") ;
+          newPicture.style.width = pictureWidth + "px";
+          newPicture.style.height = pictureHeight + "px" ;
+          newPicture.src = "images/moomin1.jpg" ;
+          newPicture.style.border = "dashed";
+          document.getElementById("takeBorder").selectedIndex = 0;
+          document.getElementById("default-border").checked = true;
+          newPicture.style.borderWidth = borderWidth + "px";
+          var newTitle = document.getElementById("takeTitle") ;
+          newTitle.innerHTML = "Moomin" ;
+
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="center_container">
+    <div>
+    <button onclick="previousPicture()"> Previous </button>
+    <button onclick="nextPicture()"> Next </button>
+    <button onclick="enlargePicture()"> Enlarge </button>
+    <button onclick="shrinkPicture()"> Shrink </button>
+    <button onclick="reset()"> Reset </button>
+
+    <select onchange="changeBorder()" class="centered" id="takeBorder" >Border Style
+        <option id="borderCaptain">Dashed</option>
+        <option>Dotted</option>
+        <option>Solid</option>
+        <option>Outset</option>
+        <option>Groove</option>
+    </select>
+
+        <form onchange="changeBorderSize()"> Border Width
+            <input type="radio" class="border_size" name="border" value="2px">2px
+            <input id='default-border' type="radio" class="border_size" name="border" value="4px" checked>4px
+            <input type="radio" class="border_size" name="border" value="6px">6px
+            <input type="radio" class="border_size" name="border" value="8px">8px
+            <input type="radio" class="border_size" name="border" value="10px">10px
+        </form>
+    </div>
+
+    <img    onclick="nextPicture()"
+            id="takeImages"
+            src="images/moomin1.jpg">
+    <figcaption id="takeTitle">Moomin</figcaption>
+</div>
+
+
+</body>
+</html>

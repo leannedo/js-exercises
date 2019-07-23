@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ButtonDemoNgoc</title>
+
+    <style>
+        .centered
+        {
+            text-align: center;
+            margin: 60px auto;
+            font-family: "Neo Sans Intel";
+            font-size: 20px;
+            display: flex;
+            width: 50%;
+            justify-content: center;
+        }
+        body
+        {
+            background-color: lightyellow;
+        }
+        button
+        {
+            background-color: orangered;
+            border-style: outset;
+            border-radius: 25px;
+            padding: 20px;
+            color: white;
+            font-family: Verdana;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: goldenrod;
+        }
+
+    </style>
+    <script>
+        var dayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        var monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"];
+        var i=0;
+        var j=0;
+
+        function changeDay()
+        {
+          i++;
+          if (i >= dayArray.length)
+          {
+            i = 0;
+          }
+          var newDay = document.getElementById("takeDay");
+          newDay.innerHTML = dayArray[i];
+        }
+        function changeMonth()
+        {
+          j++;
+          if (j >= monthArray.length)
+          {
+            j = 0;
+          }
+          var newMonth = document.getElementById("takeMonth");
+          newMonth.innerHTML = monthArray[j];
+        }
+    </script>
+</head>
+<body>
+
+</body>
+<div class="centered">
+    <div class="day-container">
+        <h1 id="takeDay">Monday</h1>
+        <button onclick="changeDay()">Change Day</button>
+    </div>
+    <div class="month-container">
+        <h1 id="takeMonth">January</h1>
+        <button onclick="changeMonth()">Change Month</button>
+    </div>
+</div>
+</html>

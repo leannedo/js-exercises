@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Challenge</title>
+    <style>
+        /*.container*/
+        /*{*/
+            /*height:100vh;*/
+            /*background-color: lightcyan;*/
+        /*}*/
+        header, main, aside, footer
+        {
+            font-size:40px;
+            font-family: "Diamonds Regular", arial, sans-serif;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
+        header
+        {
+            background-color: mediumvioletred;
+            height:100px;
+
+        }
+        main
+        {
+            background-color: cornflowerblue;
+            float: left;
+            height:400px;
+            width:60%;
+        }
+        aside
+        {
+            background-color: orangered;
+            height:400px;
+            width:40%;
+            float: right;
+        }
+        footer
+        {
+            background-color: lightcoral;
+            height:100px;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>Header</header>
+    <main>Content - float left </main>
+    <aside>Navigation - float right </aside>
+    <footer>Footer - clear both</footer>
+</div>
+</body>
+</html>
