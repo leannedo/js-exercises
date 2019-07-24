@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function calculateNumber() {
+        let input1 = +(prompt("Please input 1st number: ", "4")),
+            input2 = +(prompt("Please input 2nd number: ", "5")),
+            operator = prompt("Enter m for Multiplication or d for division: ", "m"),
+            result;
+
+        while (operator !== 'm' && operator !== 'd') {
+            alert("Operator is missing or not according to instruction")
+            operator = prompt("Enter m for Multiplication or d for division: ", "m");
+        }
+
+        switch(operator) {
+            case 'm':
+                result = input1 * input2;
+                break;
+
+            case 'd':
+                result = input1 / input2;
+                break;
+            default:
+                result = input1 * input2;
+                break;
+            
+        }
+
+        alert (result);
+    } 
+
+
+    calculateNumber();
+    </script>
+</body>
+</html>
