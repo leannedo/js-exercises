@@ -1,4 +1,4 @@
-
+//display date in required format
 
 function displayDate(date) {
 

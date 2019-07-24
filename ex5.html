@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p class="" id="printStr"></p>
+    <script>
+        let givenStr = 'Hello World ';
+
+        function alterString(str) {
+            return str.substr(str.length - 1) + str.substr(0, str.length - 1);
+        }
+
+        function rotateString() {
+            window.setInterval(function() { 
+                givenStr = alterString(givenStr);
+                document.getElementById('printStr').innerHTML = givenStr;
+            }, 100);
+        }
+
+        rotateString();
+
+    </script>
+</body>
+</html>
